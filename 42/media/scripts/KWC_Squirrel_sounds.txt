@@ -1,0 +1,97 @@
+module Base
+{
+    sound KWC_SquirrelAdult_Idle
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Idle.ogg,
+            distanceMax = 55,
+        }
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Idle2.ogg,
+            distanceMax = 55,
+        }
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Idle3.ogg,
+            distanceMax = 55,
+        }
+    }
+
+    sound KWC_SquirrelAdult_Stressed
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Stressed.ogg,
+            distanceMax = 55,
+        }
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Stressed2.ogg,
+            distanceMax = 55,
+        }
+    }
+
+    sound KWC_SquirrelAdult_Pain
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Pain.ogg,
+            distanceMax = 55,
+        }
+    }
+
+    sound KWC_SquirrelAdult_Death
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelAdult_Death.ogg,
+            distanceMax = 55,
+        }
+    }
+
+    sound KWC_SquirrelBaby_Idle
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelBaby_Idle.ogg,
+            distanceMax = 40,
+        }
+    }
+
+    sound KWC_SquirrelBaby_Stressed
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelBaby_Stressed.ogg,
+            distanceMax = 40,
+        }
+    }
+
+    sound KWC_SquirrelBaby_Pain
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelBaby_Pain.ogg,
+            distanceMax = 40,
+        }
+    }
+
+    sound KWC_SquirrelBaby_Death
+    {
+        category = Animals,
+        clip
+        {
+            file = media/sound/KWC_SquirrelBaby_Death.ogg,
+            distanceMax = 40,
+        }
+    }
+}

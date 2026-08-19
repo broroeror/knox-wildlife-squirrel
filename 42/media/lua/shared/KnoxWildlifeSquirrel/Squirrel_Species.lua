@@ -1,0 +1,62 @@
+-- Knox Wildlife: Squirrel -- registration.
+--
+-- The whole spawning side of this mod. There is no generator here and no map
+-- analysis: Squirrel_RouteData.lua is baked offline by the base mod's
+-- tools/gen_routes.py from habitats.json, and hands its pool over with
+-- registerRoutePool. All that is left is to say what this animal is and how
+-- common it was.
+--
+-- ITS OWN GROUND. An addon species that declares no habitat inherits whichever
+-- base pool its bucket falls back to, which is fine for something shaped like a
+-- raccoon and wrong for this. Declaring `habitat` against a pool of our own
+-- means it inherits nothing: its own terrain, its own geometry, no sharing.
+
+if not KnoxWildlife or (KnoxWildlife.API_VERSION or 0) < 1 then
+    print("[KnoxWildlifeSquirrel] Knox Wildlife not found (or too old); "
+        .. "this addon needs API_VERSION 1. Not loading.")
+    return
+end
+
+local KW = KnoxWildlife
+local ID = "kwc_squirrel"
+
+-- Density is the only number that decides how common this animal is. The base
+-- mod turns it into routes with
+--
+--     routes = density * habitat area / mean group size * realism fraction
+--
+-- so nothing here competes with any other species or mod. Change it and only
+-- this animal moves.
+--
+-- 50 to 200 per square mile in hardwood. The map cannot supply anything like that many territories, so this runs habitat-capped and says so at load.
+local DENSITY = 100.0
+
+-- The animal definitions come from tools/write_definitions.py. If one failed to
+-- load, registering anyway would put a group in the spawn pool whose animal does
+-- not exist, so check the FEMALE first: ID is the migration GROUP and was never
+-- an animal id.
+if AnimalDefinitions and AnimalDefinitions.animals
+    and AnimalDefinitions.animals["kwc_squirrelfemale"] == nil then
+    print("[KnoxWildlifeSquirrel] no animal definition for kwc_squirrelfemale; not registering. "
+        .. "Its Definitions/animal file did not load.")
+    return
+end
+
+if KW.registerSpecies(ID, {
+    female = "kwc_squirrelfemale", male = "kwc_squirrelmale", baby = "kwc_squirrelkit",
+    possibleBreed = "default",
+    minAnimal = 1, maxAnimal = 2, maxMale = 1,
+    babyChance = 50,
+    trackSize = "small", speed = 0.05,
+    density = DENSITY,
+    habitat = ID,
+    enabledOption = "KnoxWildlifeSquirrel.Enabled",
+    routeOption  = "KnoxWildlifeSquirrel.Routes",
+    groupOption  = "KnoxWildlifeSquirrel.GroupSize",
+}) then
+    -- The bucket decides only the FALLBACK pool, and this declares its own
+    -- habitat, so the weight is vestigial. Passed because addToBucket is public
+    -- API from version 1 and an addon written then supplies one.
+    KW.addToBucket("small", ID, 50)
+    print("[KnoxWildlifeSquirrel] registered on its own habitat (API v" .. KW.API_VERSION .. ")")
+end
