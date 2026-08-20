@@ -1,29 +1,29 @@
 VERSION = 1,
 
-option KnoxWildlifeSquirrel.Enabled
+option KnoxLifeSquirrels.Enabled
 {
     type = boolean,
     default = true,
-    page = KnoxWildlifeAnimals,
-    translation = KnoxWildlifeSquirrel_Enabled,
+    page = KnoxLifeAnimals,
+    translation = KnoxLifeSquirrels_Enabled,
 }
 
-option KnoxWildlifeSquirrel.Routes
+option KnoxLifeSquirrels.Routes
 {
     type = enum,
     numValues = 5,
     default = 3,
-    page = KnoxWildlifeAnimals,
-    translation = KnoxWildlifeSquirrel_Routes,
-    valueTranslation = KnoxWildlifeSquirrel_Scale,
+    page = KnoxLifeAnimals,
+    translation = KnoxLifeSquirrels_Routes,
+    valueTranslation = KnoxLifeSquirrels_Scale,
 }
 
-option KnoxWildlifeSquirrel.GroupSize
+option KnoxLifeSquirrels.GroupSize
 {
     type = enum,
     numValues = 5,
     default = 3,
-    page = KnoxWildlifeAnimals,
-    translation = KnoxWildlifeSquirrel_GroupSize,
-    valueTranslation = KnoxWildlifeSquirrel_Scale,
+    page = KnoxLifeAnimals,
+    translation = KnoxLifeSquirrels_GroupSize,
+    valueTranslation = KnoxLifeSquirrels_Scale,
 }
